@@ -1,7 +1,7 @@
 FROM debian:latest
 MAINTAINER Conda Development Team <conda@continuum.io>
 
-ADD Miniconda3-latest-Linux-x86_64.sh /tmp/miniconda.sh
+ADD https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh /tmp/miniconda.sh
 
 
 RUN bash /tmp/miniconda.sh -bfp /usr/local \
