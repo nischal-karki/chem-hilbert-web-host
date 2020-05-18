@@ -78,13 +78,13 @@ def make_bar(fname,name, score):
     make_folder('./hilbert_bar/bar')
     make_folder('./hilbert_bar/bar/'+fname)
     plt.savefig('./hilbert_bar/bar/'+fname+'/'+name+'.svg')
-    plt.cla()
+    plt.close(all)
 
 def process_files(file):
     fname = file.split('/')[-1][:-4]
     data = np.load(file,allow_pickle=True).item()
     for i in data:
-        if i in ["ids", "links", "smiles"]:
+        if i in ["ids", "links", "smiles"] or "mad" in i:
             continue
         hilbert_plot(i,fname,data[i])
 

@@ -21,3 +21,6 @@ ADD ./dictionary_scores.tar.gz /opt/prepare/
 
 WORKDIR /opt/prepare
 RUN python plot_hill.py dictionary_scores
+RUN rm -rf /opt/prepare/*.py *cache*
+RUN tar -cvf server_data.tar *
+RUN mv server_data.tar /opt/
