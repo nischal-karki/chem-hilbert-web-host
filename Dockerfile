@@ -1,5 +1,4 @@
 FROM debian:latest AS build
-MAINTAINER Conda Development Team <conda@continuum.io>
 
 ADD https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh /tmp/miniconda.sh
 
