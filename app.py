@@ -37,11 +37,10 @@ def run_page(database,page_name):
     print(coordinate_to_id[database]['scale'])
     if database not in dataset_pages.keys() or page_name not in data[database].keys():
         return render_template("Error_404.html")
-    try:
+    if len(list(request.args)) != 0:
         i = coordinate_to_id[database][list(request.args)[0]]
-        print(i)
         ind = get_ids(database,i)
-    except:
+    else:
         if dataset_pages[database]:
             template = "index_smina_true.html"
         else:
@@ -63,8 +62,10 @@ def run_page(database,page_name):
         smina_name = page_name.replace('SSnet','smina')
         for i in range(len(page_data)):
             ssnet_score = '{:.3f}'.format(data[database][ssnet_name][ind[i]])
-            smina_score = '{:.1f}'.format(data[database][smina_name][ind[i]])
+            smina_score = '{:.2f}'.format(data[database][smina_name][ind[i]])
+            smina_mad = '{:.2f}'.format(data[database][smina_name+'_mad'][ind[i]])
             page_data[i].append(ssnet_score)
+            page_data[i].append(smina_score)
             page_data[i].append(smina_score)
             page_data[i].append('/babel/{}/{}'.format(database, ind[i]))
     else:
@@ -101,7 +102,6 @@ def proteins(page_name):
     ids = ""
     if len(list(request.args)) != 0:
         ids = page_name + "_" + list(request.args)[0] + '.pdb'
-    print(page_name)
     return render_template("protein_view.html", ids=ids, protein_name=page_name+".pdb")
 
 
@@ -109,14 +109,15 @@ def proteins(page_name):
 def send_hilbert(directory,filename):
     return send_from_directory("hilbert_bar/hilbert/"+ directory, filename)
 
+# spectrum b, magenta_cyan, minimum = 0.0, maximum = 100.0
+
 @app.route('/bar/<directory>/<filename>')
 def send_bar(directory,filename):
     return send_from_directory("hilbert_bar/bar/"+ directory, filename)
 
-@app.route('/pdbs/<pdb>')
-#To be implemented
-def send_pdb(pdb):
-    return send_from_directory("images/pdb/", pdb)
+@app.route('/pdbs/<directory>/<pdb>')
+def send_pdb(directory,pdb):
+    return send_from_directory("pdb/"+directory+"/", pdb)
 
 @app.route('/babel/<database>/<int:index>')
 def babel_images(database,index):

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Drug Selector</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles/mainpage.css"></style>
+</head>
+<body>
+<div>
+
+    <div class="main_title">Welcome to our research page
+        <div>Please click on one of the following options</div>
+    </div>
+        
+    <div class="grid2colslists">
+        {% for (title, page_names, page_urls, length) in page_info %}
+        <div style="font-size:3vw">Scores for {{ title }}
+            {% for count in range(length) %}
+            <div style="font-size:2vw">
+                <a href="{{ page_urls[count] }}">{{ page_names[count] }}</a>
+            </div>
+            {% endfor %}
+            <br>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>

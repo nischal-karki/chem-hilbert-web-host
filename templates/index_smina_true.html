@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page_name }}</title>
+	<link rel="stylesheet" type="text/css" href="/static/styles/mainpage.css"></style>
+	<script src="/static/scripts/ngl.js"></script>
+	<script src="/static/scripts/jquery.min.js"></script>
+</head>
+
+<body>
+
+<h4> <a href="/"> Go Back </a> </h4>
+
+<div class="main_title">
+	{{ database }}: {{ page_name }}
+</div>
+<hr>
+
+<div display:"block">
+	<div class="grid2cols">
+			<div>
+				<img src="/hilbert/{{database}}/{{page_name}}.png" title="" class="hilbert">
+			</div>
+		<div>
+			<img src="/bar/{{database}}/{{page_name}}.svg" class="bar">
+        </div>
+	</div>
+	<div id="click_loc" style="text-align: center;"></div>
+</div>
+<script type="text/javascript">
+	function coords($img,e){
+		var currentClickPosX = e.pageX - $img.offset().left;
+  		var currentClickPosY = e.pageY - $img.offset().top;
+
+  		var currentWidth = $img.width();
+  		var currentHeight = $img.height();
+
+  		var naturalWidth = {{ img_scale[0] }};
+  		var naturalHeight = {{ img_scale[1] }};
+
+  		var naturalClickPosX = ((naturalWidth / currentWidth) * currentClickPosX).toFixed(0);
+		var naturalClickPosY = (naturalHeight-(naturalHeight / currentHeight) * currentClickPosY).toFixed(0);
+		return naturalClickPosX + "," + naturalClickPosY;
+	};
+	$(".hilbert").on("dblclick", function(e){
+		var $img = $(this);
+		window.location = "./{{page_name}}?"+coords($img,e);
+	});
+	$(".hilbert").on("click",function(e){
+		var $img = $(this);
+		console.log("poop");
+		document.getElementById("click_loc").innerHTML="Clicked cursor position: "+coords($img,e) ;
+	});
+</script>
+
+	<hr>
+
+	<div class="col-lg-12">
+        <h1 class="page-header">Similar compounds</h1>
+    </div>
+    <hr>
+	<div class="grid3cols">
+	{% for (ids_, links, ssnet, smina, smina_mad ,img_links) in page_data %}
+        
+		<div>
+			<div style="margin:auto; text-align: center;">
+				<div>
+				<a href="/proteins/{{ protein_name }}?{{ ids_ }}" target="_blank">
+					{{ ids_ }}
+				</a>
+				</div>
+				<div>
+					SSnet score: {{ ssnet }}
+				</div>
+				<div>
+					smina score: {{ smina }} &#177 {{ smina_mad }} kcal/mole
+				</div>
+				<a href="{{links }}" target="_blank" style="text-align: center;">Link to the compound in Database</a>
+			</div>
+			<div style="width: 250px; height: 250px; margin:auto">
+				<img src="{{img_links}}" style="object-fit:fill; width:inherit; height:inherit">
+			</div>
+		</div>
+    {% endfor %}
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+.left-div {
+    float: left;
+}
+.right-div {
+    float: right;
+}
+
+.main_title {
+	font-size: 3vw;
+	margin-top: 0.67em;
+	margin-bottom: 0.67em;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: bold;
+	text-align:center;
+	display: block;
+}
+
+.main_title > div {
+	font-size: 2vw;
+}
+
+.hilbert {
+	display: block;
+	width: 50vw;
+	height: auto;
+	float: right;
+}
+
+.bar{
+	height: 50vw;
+	width: auto;
+	float:left;
+}
+
+.grid2colslists {
+	display: grid;
+	grid-row: none;
+	grid-template-columns: 1fr 1fr;
+	overflow: auto;
+	position: relative;
+	text-align:center;
+}
+.grid2colslists > div {
+	padding: 0px;
+	overflow: auto;
+}
+.grid2cols {
+	display: grid;
+	grid-row: none;
+	grid-template-columns: auto auto;
+	overflow: auto;
+	position: relative;
+}
+
+.grid2cols > div {
+	padding: 0px;
+	overflow: auto;
+}
+
+.grid3cols {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 10px;
+	background-color: snow;
+	padding:0px;
+}
+
+.gid3cols > div {
+		background-color: rgba(255,255,255,0.9);
+		font-size-adjust: auto;
+		text-align: left;
+}
