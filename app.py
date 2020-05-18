@@ -67,11 +67,8 @@ def run_page(database,page_name):
         template = "index_smina_false.html"
         for i in range(len(page_data)):
             page_data[i].append('{:.3f}'.format(data[database][page_name][ind[i]]))
-            if database == "BDB":
-                smiles = data[database]['smiles'][ind[i]]
-                page_data[i].append('/babel/{}/{}'.format(database, ind[i]))
-            elif database == "ZINC":
-                page_data[i].append("http://zinc15.docking.org/substances/"+data[database]['ids'][ind[i]]+".png")
+            smiles = data[database]['smiles'][ind[i]]
+            page_data[i].append('/babel/{}/{}'.format(database, ind[i]))
     protein_name = page_name.split('_')[1].split('-')[0]
     return render_template(template,protein_name=protein_name,page_name=page_name,database=database,page_data=page_data,img_scale=coordinate_to_id[database]['scale'])
 
