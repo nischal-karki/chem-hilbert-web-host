@@ -70,7 +70,7 @@ def run_page(database,page_name):
             page_data[-1][-1] = "https://www.drugbank.ca/drugs/" + data[database]['ids'][i]
         elif "ZINC" in data[database]['ids'][i]:
             page_data[-1][-1] = "http://zinc15.docking.org/substances/"+data[database]['ids'][i]
-    if dataset_pages[database]:
+    if dataset_pages[database] or not "Zn" in page_name:
         pdb = page_name.split('_')[1].split('.')[0].split('-')[0] +'_'
         ssnet_name = page_name.replace('smina','SSnet').replace('8','D')
         smina_name = page_name.replace('SSnet','smina')
@@ -99,7 +99,7 @@ def start_page():
         page_names = []
         page_url = []
         for j in data[i]:
-            if j in ["ids", "links", "smiles"]:
+            if j in ["ids", "links", "smiles"] or "mad" in j:
                 continue
             page_url.append('/'.join(['/data',i,j]))
             page_names.append(j)
@@ -135,6 +135,8 @@ def send_pdb(pdb):
 
 @app.route('/babel/<database>/<int:index>')
 def babel_images(database,index):
+    if not os.path.isdir('babel'):
+        os.mkdir('babel')
     if not os.path.isdir('babel/'+database):
         os.mkdir('babel/'+database)
     if not os.path.isfile('babel/{}/{}.png'.format(database,index)):
