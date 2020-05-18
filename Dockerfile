@@ -31,6 +31,6 @@ WORKDIR /app
 RUN tar -xvf server_data.tar
 COPY ./app.py /app/app.py
 RUN pip install numpy
-RUN apt install -y openbabel
+RUN apt update && apt-get install -y openbabel
 ADD ./templates_static.tar /app/
 EXPOSE 80

@@ -13,20 +13,6 @@ except ImportError:
 app = Flask(__name__)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-def score_names(given_name):
-    split_name = given_name.split('-')
-    ssnet = []
-    smina = []
-    for r in range(len(split_name)//2):
-        smina.append('smina')
-        smina.append(split_name[2*r+1])
-        ssnet.append('SSnet')
-        ssnet.append(split_name[2*r+1])
-    ssnet = '-'.join(ssnet)
-    smina = '-'.join(smina)
-    return ssnet, smina
-
-
 def get_ids(database, start_index):
     vs = set()
     drug_info = []
@@ -51,10 +37,6 @@ def run_page(database,page_name):
     print(coordinate_to_id[database]['scale'])
     if database not in dataset_pages.keys() or page_name not in data[database].keys():
         return render_template("Error_404.html")
-    if dataset_pages[database]:
-        template = "index_smina_true.html"
-    else:
-        template = "index_smina_false.html"
     try:
         i = coordinate_to_id[database][list(request.args)[0]]
         print(i)
@@ -70,7 +52,8 @@ def run_page(database,page_name):
             page_data[-1][-1] = "https://www.drugbank.ca/drugs/" + data[database]['ids'][i]
         elif "ZINC" in data[database]['ids'][i]:
             page_data[-1][-1] = "http://zinc15.docking.org/substances/"+data[database]['ids'][i]
-    if dataset_pages[database] or not "Zn" in page_name:
+    if dataset_pages[database] and not "Zn" in page_name:
+        template = "index_smina_true.html"
         pdb = page_name.split('_')[1].split('.')[0].split('-')[0] +'_'
         ssnet_name = page_name.replace('smina','SSnet').replace('8','D')
         smina_name = page_name.replace('SSnet','smina')
@@ -81,6 +64,7 @@ def run_page(database,page_name):
             page_data[i].append(smina_score)
             page_data[i].append('/babel/{}/{}'.format(database, ind[i]))
     else:
+        template = "index_smina_false.html"
         for i in range(len(page_data)):
             page_data[i].append('{:.3f}'.format(data[database][page_name][ind[i]]))
             if database == "BDB":
