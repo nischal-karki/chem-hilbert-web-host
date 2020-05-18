@@ -13,21 +13,26 @@ RUN bash /tmp/miniconda.sh -bfp /usr/local \
 RUN pip install drawSvg
 
 COPY ./*.py /opt/prepare/
-ADD ./dictionary_scores.tar.gz /opt/prepare/
+ADD https://smu.box.com/shared/static/d0q8qib58sxgba3paq2iybvmk7ta6f15.gz /opt/prepare/dictionary.tar.gz
 WORKDIR /opt/prepare
+RUN tar -xzf dictionary.tar.gz && rm -rf dictionary.tar.gz
 RUN python plot_hill.py dictionary_scores
 RUN rm -rf /opt/prepare/*.py *cache*
 
 FROM tiangolo/meinheld-gunicorn-flask:python3.7
 
 ENV MODULE_NAME app
-COPY --from=build /opt/prepare/* /app/
+COPY --from=build /opt/prepare /app/
 WORKDIR /app
 COPY ./app.py /app/app.py
 RUN pip install numpy
 RUN apt update && apt-get install -y openbabel
-COPY ./templates /app/
-COPY ./static /app/
-ADD ./ligand.tar.gz /app/pdb/
-ADD ./protein.tar.gz /app/pdb/
-EXPOSE 80
+COPY ./templates /app/templates
+COPY ./static /app/static
+WORKDIR /app/pdb
+ADD https://smu.box.com/shared/static/kx7nntphlbha5pyera4z7769kcfgnnwc.gz ./ligand.tar.gz
+RUN tar -xzf ligand.tar.gz && rm -rf ligand.tar.gz
+ADD https://smu.box.com/shared/static/jfa0oz2x6mso9z36cf0apjysrm2yxhq5.gz ./protein.tar.gz
+RUN tar -xzf protein.tar.gz && rm -rf protein.tar.gz
+WORKDIR /app
+
