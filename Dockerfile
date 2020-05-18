@@ -24,3 +24,11 @@ RUN python plot_hill.py dictionary_scores
 RUN rm -rf /opt/prepare/*.py *cache*
 RUN tar -cvf server_data.tar *
 RUN mv server_data.tar /opt/
+
+FROM tiangolo/meinheld-gunicorn-flask:python3.7
+ENV MODULE_NAME app
+COPY --from=build /opt/server_data.tar /app
+WORKDIR /app
+RUN tar -xvf server_data.tar
+COPY ./app.py /app/app.py
+RUN pip install numpy

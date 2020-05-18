@@ -78,7 +78,7 @@ def make_bar(fname,name, score):
     make_folder('./hilbert_bar/bar')
     make_folder('./hilbert_bar/bar/'+fname)
     plt.savefig('./hilbert_bar/bar/'+fname+'/'+name+'.svg')
-    plt.close(all)
+    plt.close("all")
 
 def process_files(file):
     fname = file.split('/')[-1][:-4]
