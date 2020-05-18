@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:latest AS build
 MAINTAINER Conda Development Team <conda@continuum.io>
 
 ADD https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh /tmp/miniconda.sh
@@ -16,7 +16,8 @@ RUN bash /tmp/miniconda.sh -bfp /usr/local \
 #RUN /usr/local/conda.sh
 RUN pip install drawSvg
 
-COPY . /tmp/prepare
+COPY ./*.py /tmp/prepare
+ADD ./dictionary_scores.tar.gz /temp/prepare
 
 WORKDIR /tmp/prepare
 RUN python plot_hill.py dictionary_scores
