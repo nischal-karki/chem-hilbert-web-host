@@ -16,7 +16,7 @@ RUN bash /tmp/miniconda.sh -bfp /usr/local \
 #RUN /usr/local/conda.sh
 RUN pip install drawSvg
 
-COPY . /tmp/prepare
+COPY . /opt/prepare
 
-WORKDIR /tmp/prepare
+WORKDIR /opt/prepare
 RUN python plot_hill.py dictionary_scores
