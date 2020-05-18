@@ -42,6 +42,10 @@ def run_page(database,page_name):
         print(i)
         ind = get_ids(database,i)
     except:
+        if dataset_pages[database]:
+            template = "index_smina_true.html"
+        else:
+            template = "index_smina_false.html"
         return render_template(template,page_name=page_name,database=database,img_scale=coordinate_to_id[database]['scale'])
     page_data = []
     for i in ind:
