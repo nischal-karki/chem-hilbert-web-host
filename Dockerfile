@@ -19,5 +19,5 @@ RUN pip install drawSvg
 COPY ./*.py /tmp/prepare
 ADD ./dictionary_scores.tar.gz /temp/prepare
 
-WORKDIR /tmp/prepare
+WORKDIR /opt/prepare
 RUN python plot_hill.py dictionary_scores
