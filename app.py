@@ -66,7 +66,7 @@ def run_page(database,page_name):
             smina_mad = '{:.2f}'.format(data[database][smina_name+'_mad'][ind[i]])
             page_data[i].append(ssnet_score)
             page_data[i].append(smina_score)
-            page_data[i].append(smina_score)
+            page_data[i].append(smina_mad)
             page_data[i].append('/babel/{}/{}'.format(database, ind[i]))
     else:
         template = "index_smina_false.html"
