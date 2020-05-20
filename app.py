@@ -142,4 +142,4 @@ for i in os.listdir('dictionary_scores'):
     coordinate_to_id[i.split('.')[0]] = np.load(os.path.join('coord_to_index',i),allow_pickle=True).item()
 
 if __name__ == "__main__":
-    app.run(port=5000, debug=True)
+    app.run(port=8080, debug=False)

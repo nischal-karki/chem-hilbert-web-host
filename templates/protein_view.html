@@ -19,14 +19,14 @@
   var stage;
   var drug;
   document.addEventListener("DOMContentLoaded", function () {
-      var journal_color = NGL.ColormakerRegistry.addScheme(function (params) {
-         this.atomColor = function (atom) {
-             if (atom.serial < 6090) {
-                   return 0x00FFFF // cyan
-             } else {
-                   return 0xFF00FF // magenta
-             }
-         }
+    var journal_color = NGL.ColormakerRegistry.addScheme(function (params) {
+      this.atomColor = function (atom) {
+        if (atom.serial < 6090) {
+          return 0x00FFFF // cyan
+        } else {
+          return 0xFF00FF // magenta
+        }
+	}
       });
     stage = new NGL.Stage("viewport");
     stage.loadFile(url, {defaultRepresentation: true}).then(function(o){
