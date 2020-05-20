@@ -48,8 +48,8 @@
 </div>
 Download Files:
 <br>
-<a href="{{ url_for('send_pdb', pdb=protein_name) }}"> {{ protein_name }} </a>
+<a href="/pdbs/protein/{{ protein_name }}"> {{ protein_name }} </a>
 <br>
-<a href="{{ url_for('send_pdb', pdb=ids)}}"> {{ ids }}</a>
+<a href="/pdbs/ligand/{{ ids }}"> {{ ids }}</a>
 </body>
 </html>
