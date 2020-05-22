@@ -3,9 +3,7 @@
 <head>
   <title>Ligand:Protein Viewer</title>
   <script src="../static/scripts/ngl.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.js"></script>
+  <script src="../static/scripts/jquery.min.js"></script> 
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
@@ -49,7 +47,7 @@
 </div>
 Download Files:
 <br>
-<a href="/pdbs/protein/{{ protein_fname }}"> {{ protein_name[:-4] }} </a>
+<a href="/pdbs/protein/{{ protein_fname }}"> {{ protein_fname[:-4] }} </a>
 <br>
 <a href="/pdbs/ligand/{{ drug_fname }}"> {{ drug_fname.split("_")[1][:-4] }}</a>
 </body>

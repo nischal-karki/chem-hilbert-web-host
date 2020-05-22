@@ -99,12 +99,12 @@ def scores(database,page_name):
 
 @app.route("/structures/<string:protein>/<string:ids>")
 def proteins(protein, ids):
-    drug = page_name+"_"+ids+".pdb"
+    drug = protein+"_"+ids+".pdb"
     return render_template("protein_view.html", drug_fname=drug, protein_fname=protein+".pdb")
 
 @app.route('/hilbert/<directory>/<filename>')
 def send_hilbert(directory,filename):
-    return send_file(hilberts[directory][filename], mimetype="image/png")
+    return send_from_directory("hilbert_bar/hilbert/{}/".format(directory),filename)
 
 @app.route('/bar/<directory>/<filename>')
 def send_bar(directory,filename):
