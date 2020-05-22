@@ -1,7 +1,8 @@
 import os
 import flask
-from flask import Flask, request, render_template, send_from_directory
+from flask import Flask, request, render_template, send_from_directory, send_file
 import numpy as np
+from io import BytesIO
 try:
     from html import escape
 except ImportError:
@@ -41,7 +42,7 @@ def run_page(database,page_name):
         i = coordinate_to_id[database][list(request.args)[0]]
         ind = get_ids(database,i)
     else:
-        if dataset_pages[database]:
+        if dataset_pages[database][page_name]:
             template = "index_smina_true.html"
         else:
             template = "index_smina_false.html"
@@ -55,7 +56,7 @@ def run_page(database,page_name):
             page_data[-1][-1] = "https://www.drugbank.ca/drugs/" + data[database]['ids'][i]
         elif "ZINC" in data[database]['ids'][i]:
             page_data[-1][-1] = "http://zinc15.docking.org/substances/"+data[database]['ids'][i]
-    if dataset_pages[database] and not "Zn" in page_name:
+    if dataset_pages[database][page_name]:
         template = "index_smina_true.html"
         pdb = page_name.split('_')[1].split('.')[0].split('-')[0] +'_'
         ssnet_name = page_name.replace('smina','SSnet').replace('8','D')
@@ -96,20 +97,14 @@ def start_page():
 def scores(database,page_name):
     return run_page(database, page_name)
 
-#To be implemented
-@app.route("/proteins/<string:page_name>")
-def proteins(page_name):
-    ids = ""
-    if len(list(request.args)) != 0:
-        ids = page_name + "_" + list(request.args)[0] + '.pdb'
-    return render_template("protein_view.html", ids=ids, protein_name=page_name+".pdb")
-
+@app.route("/structures/<string:protein>/<string:ids>")
+def proteins(protein, ids):
+    drug = page_name+"_"+ids+".pdb"
+    return render_template("protein_view.html", drug_fname=drug, protein_fname=protein+".pdb")
 
 @app.route('/hilbert/<directory>/<filename>')
 def send_hilbert(directory,filename):
-    return send_from_directory("hilbert_bar/hilbert/"+ directory, filename)
-
-# spectrum b, magenta_cyan, minimum = 0.0, maximum = 100.0
+    return send_file(hilberts[directory][filename], mimetype="image/png")
 
 @app.route('/bar/<directory>/<filename>')
 def send_bar(directory,filename):
@@ -134,12 +129,14 @@ data = {}
 coordinate_to_id = {}
 dataset_pages = {}
 for i in os.listdir('dictionary_scores'):
-    smina_present = False
-    if "approved" in i or "natural" in i:
-        smina_present = True
-    dataset_pages[i.split('.')[0]] = smina_present
-    data[i.split('.')[0]] = np.load(os.path.join('dictionary_scores',i),allow_pickle=True).item()
-    coordinate_to_id[i.split('.')[0]] = np.load(os.path.join('coord_to_index',i),allow_pickle=True).item()
+	fname = i.split('.')[0]
+	data[fname] = np.load(os.path.join('dictionary_scores',i),allow_pickle=True).item()
+	coordinate_to_id[fname] = np.load(os.path.join('coord_to_index',i),allow_pickle=True).item()
+	dataset_pages[fname] = {}
+	for j in data[fname]:
+		if j in ["ids", "links", "smiles"] or "mad" in j:
+			continue
+		dataset_pages[fname][j] = fname in ["approved", "natural"] and "Zn" not in j
 
 if __name__ == "__main__":
     app.run(port=8080, debug=False)

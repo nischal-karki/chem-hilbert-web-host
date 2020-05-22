@@ -11,11 +11,10 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 </head>
 <body>
-<div><a href="javascript:history.back()"> Go back</a></div>
   <div>
   <script>
 	var url;
-	url="/pdbs/protein/{{ protein_name }}";
+	url="/pdbs/protein/{{ protein_fname }}";
   var stage;
   var drug;
   document.addEventListener("DOMContentLoaded", function () {
@@ -33,7 +32,7 @@
       o.addRepresentation("cartoon", {colorScheme: journal_color});
       drug.autoView();
     });
-    stage.loadFile( "/pdbs/ligand/{{ ids }}", { asTrajectory: true}).then(function(o){
+    stage.loadFile( "/pdbs/ligand/{{ drug_fname }}", { asTrajectory: true}).then(function(o){
       o.addRepresentation("ball+stick", { multipleBond:"symmetric"});
       o.autoView();
       drug = stage.compList[0];
@@ -50,8 +49,8 @@
 </div>
 Download Files:
 <br>
-<a href="/pdbs/protein/{{ protein_name }}"> {{ protein_name }} </a>
+<a href="/pdbs/protein/{{ protein_fname }}"> {{ protein_name[:-4] }} </a>
 <br>
-<a href="/pdbs/ligand/{{ ids }}"> {{ ids }}</a>
+<a href="/pdbs/ligand/{{ drug_fname }}"> {{ drug_fname.split("_")[1][:-4] }}</a>
 </body>
 </html>

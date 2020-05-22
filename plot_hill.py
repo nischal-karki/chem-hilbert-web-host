@@ -53,7 +53,7 @@ def make_hilbert(img_scale,coordinates,range_of_coord,score,fname,name):
                 coord_to_index[str(x)+","+str(y)] = i
                 p.L(x,y)
         d.append(p)
-    d.setRenderSize(4096,4096)
+    d.setRenderSize(1024,1024)
     make_folder('./hilbert_bar')
     make_folder('./hilbert_bar/hilbert')
     make_folder('./hilbert_bar/hilbert/'+fname)
