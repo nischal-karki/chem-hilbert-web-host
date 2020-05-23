@@ -23,21 +23,18 @@
         } else {
           return 0xFF00FF // magenta
         }
-	}
-      });
-    stage = new NGL.Stage("viewport");
-    stage.loadFile(url, {defaultRepresentation: true}).then(function(o){
-      o.addRepresentation("cartoon", {colorScheme: journal_color});
-      drug.autoView();
+	    }
     });
-    stage.loadFile( "/pdbs/ligand/{{ drug_fname }}", { asTrajectory: true}).then(function(o){
-      o.addRepresentation("ball+stick", { multipleBond:"symmetric"});
-      o.autoView();
-      drug = stage.compList[0];
-      var component = stage.compList[0];
-      stage.compList[0].autoView();
-      stage.viewer.container.addEventListener( "dblclick", function(){
-        stage.toggleFullscreen();
+    stage = new NGL.Stage("viewport",{backgroundColor:0xFFFFFF});
+    stage.loadFile(url).then(function(o){
+      o.addRepresentation("cartoon", {colorScheme: journal_color});
+      stage.loadFile( "/pdbs/ligand/{{ drug_fname }}", { asTrajectory: true}).then(function(o){
+        o.addRepresentation("ball+stick", {multipleBond:"symmetric"});
+        drug = stage.compList[1];
+        stage.viewer.container.addEventListener( "dblclick", function(){
+          stage.toggleFullscreen();
+        });
+        o.autoView()
       });
     });
   });
@@ -52,3 +49,4 @@ Download Files:
 <a href="/pdbs/ligand/{{ drug_fname }}"> {{ drug_fname.split("_")[1][:-4] }}</a>
 </body>
 </html>
+
