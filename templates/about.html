@@ -1,8 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="raw">
-  <div class="column">        
-    <h1>Authors</h1>
+
+  <div class="block"> 
+    <div style="width: 50%;">       
+    <div>Authors</div>
     <ul>
       <li><a>Nischal Komal Karki</a></li>
       <li><a>Niraj Verma</a></li>  
@@ -11,7 +12,10 @@
       <li><a>Dr. Elfi Kraka</a></li>
       <li><a>Dr. Brian Zoltowski</a></li>
     </ul>
-    <h2>Research groups</h2>
+    </div>
+
+    <div style="width: 50%; "> 
+    <div>Research groups</div>
     <p>This project was born by the joint effort of multiple research groups @ SMU:</p>
     <ul>
       <li><a href="http://faculty.smu.edu/bzoltowski/">Zoltowski Group</a>
@@ -19,11 +23,13 @@
       <li><a href="http://faculty.smu.edu/ptao/">Tao Research Group</a></li>      
     </ul>
   </div>
-  <div class="column">
-    <h2>Acknowledgments</h2>
+
+
+    <div style="float: left; width: 50%; margin-bottom: 20px;">
+    <div>Acknowledgments</div>
     <p>This project was made possible thanks to the computational resources provided by SMU and the Center for Scientific Computation at Southern Methodist University.</p>
     <img  src="../static/ManeFrame-2.png" width="100%" height="" ></img>
-    </div>
   </div>
+</div>
 
 {% endblock %}
