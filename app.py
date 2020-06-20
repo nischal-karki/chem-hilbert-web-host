@@ -44,4 +44,4 @@ def obabel(database,index):
     return send_from_directory(*core_functionality.babel_images(database,index))
 
 if __name__ == "__main__":
-    app.run(port=8080, debug=False, host="0.0.0.0")
+    app.run(port=8080, debug=True, host="0.0.0.0")
