@@ -4,6 +4,9 @@ body {
   padding: 0;
   font-family: "Lato", sans-serif;
   color: #17202A;
+}
+
+body.background {
   background-image: url("../ACES1.png");
   background-repeat: no-repeat;
   background-size: contain;
