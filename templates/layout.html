@@ -11,13 +11,17 @@
 
     <strong>
     <nav>
-      <div class="topnav">
+      <div class="topnav" id="navbar">
         <a href="{{ url_for('home') }}">Home</a>
         <a href="{{ url_for('screening') }}">Screening</a>
         <a href="{{ url_for('about') }}">About</a>
-        <div class="logo"><img  src="../static/SMUlogo.png"></img></div>
+        <img class="logo" src="../static/SMUlogo.png"></img>
         <a href="javascript:void(0);" class="icon" onclick="nav_response()">
-          <img src="../static/hamburgericon.svg" style="width:auto; height:7vh;"></img>
+          <svg height="7vh" viewBox="0 0 400 600" width="7vh" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <line x1="30" y1="200" x2="370" y2="200" style="stroke-width:50; stroke-linecap:round"/>
+            <line x1="30" y1="300" x2="370" y2="300" style="stroke-width:50; stroke-linecap:round"/>
+            <line x1="30" y1="400" x2="370" y2="400" style="stroke-width:50; stroke-linecap: round"/>
+          </svg>
         </a>
       </div>
     </nav>
@@ -26,8 +30,16 @@
 
       <script>
         function nav_response() {
-          var x = document.getElementsByClassName("topnav");
-          x.className += " responsive";
+          var x = document.getElementsByTagName("A");
+          var i;
+          for (i=0; i< x.length; i++) {
+            if (x[i].className !== "icon") {
+              console.log(x[i])
+              x[i].classList.add("responsive");
+            }
+          }
+          document.getElementsByClassName("container")[1].style.setProperty("padding-top","30vh");
+          document.getElementsByClassName("topnav")[1].style.setProperty("height","40vh")
         }
       </script>
 

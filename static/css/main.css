@@ -32,7 +32,7 @@ div.about {
   margin: 0;
   padding: 0;
 }
-.topnav > a > img {
+.topnav a.icon {
   display: none;
 }
 
@@ -40,18 +40,26 @@ div.about {
   .topnav a { 
     display: none;
   }
-  .topnav.responsive {
-    position: relative;
-  }
-  .responsive.a.icon {
+  .topnav a.icon {
     position: absolute;
     left: 0;
     top: 0;
-  }
-  .topnav.responsive > a {
-    float: none;
     display: block;
-    text-align: left;
+    padding: 0 0 0 0;
+  }
+  .topnav svg {
+    stroke:white;
+  }
+  .topnav svg:hover {
+    stroke:black;
+  }
+  .topnav a.responsive {
+    float:none;
+    display: block;
+    text-align: right;
+    height: 7vh;
+    background-color: #f71735;
+    padding: 0 0 0 0;
   }
 }
 
@@ -64,12 +72,11 @@ div.about {
   font-size: 2.5vh;
 }
 
-.topnav img {
+.topnav img.logo {
   height: 7vh;
   width: auto;
-  position: absolute;
-  top: 0;
-  right: 2vw;
+  float: right;
+  padding-right:3vw;
 }
 
 .topnav a:hover {
