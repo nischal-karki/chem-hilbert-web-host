@@ -29,15 +29,15 @@ def proteins(protein, ids):
 
 @app.route('/hilbert/<directory>/<filename>')
 def send_hilbert(directory,filename):
-    return send_from_directory("hilbert_bar/hilbert/{}/".format(directory),filename)
+    return send_from_directory("data/hilbert_bar/hilbert/{}/".format(directory),filename)
 
 @app.route('/bar/<directory>/<filename>')
 def send_bar(directory,filename):
-    return send_from_directory("hilbert_bar/bar/"+ directory, filename)
+    return send_from_directory("data/hilbert_bar/bar/"+ directory, filename)
 
 @app.route('/pdbs/<directory>/<pdb>')
 def send_pdb(directory,pdb):
-    return send_from_directory("pdb/"+directory+"/", pdb)
+    return send_from_directory("data/pdb/"+directory+"/", pdb)
 
 @app.route('/babel/<database>/<int:index>')
 def obabel(database,index):
