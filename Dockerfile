@@ -17,6 +17,7 @@ RUN apt update && apt-get install -y openbabel
 COPY ./templates /app/templates
 COPY ./static /app/static
 COPY ./app.py /app/app.py
+COPY ./prestart.sh /app/prestart.sh
 COPY ./plot_hill.py /opt/prepare/plot_hill.py
 COPY ./hilbert_points.py /opt/prepare/hilbert_points.py
 COPY ./core_functionality.py /app/core_functionality.py
