@@ -1,0 +1,41 @@
+version:  "3.7"
+services:
+  covid19:
+    image:  "nischalk/webserver:latest"
+    ports:
+      - "80:80"
+    deploy:
+      mode:  global
+    environment:
+      - HTTP_PROXY=http://webproxy.smu.edu:3128
+      - HTTPS_PROXY=http://webproxy.smu.edu:3128
+      - HTTPS_CERT_FILE=/run/secrets/covid19_cert_file
+      - HTTPS_PRIVKEY_FILE=/run/secrets/covid19_privkey_file
+      - WORKERS_PER_CORE=2
+      - PORT=80
+    logging:
+      driver:  "syslog"
+    restart: always
+    networks:
+      - covid19-frontend
+    secrets:
+      - source: covid19_cert_file
+        mode:  444
+      - source: covid19_privkey_file
+        mode:  444
+      - source: covid19_ca_chain
+        mode:  444
+        volumes:
+            - "/data/catco/data:/app/data"
+      
+networks:
+    covid19-frontend:
+        driver:  overlay
+
+secrets:
+    covid19_cert_file:
+        external:  true
+    covid19_privkey_file:
+        external:  true
+    covid19_ca_chain:
+        external:  true
