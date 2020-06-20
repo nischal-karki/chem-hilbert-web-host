@@ -93,10 +93,10 @@ global dataset_pages
 data = {}
 coordinate_to_id = {}
 dataset_pages = {}
-for i in os.listdir('dictionary_scores'):
+for i in os.listdir('data/dictionary_scores'):
 	fname = i.split('.')[0]
-	data[fname] = np.load(os.path.join('dictionary_scores',i),allow_pickle=True).item()
-	coordinate_to_id[fname] = np.load(os.path.join('coord_to_index',i),allow_pickle=True).item()
+	data[fname] = np.load(os.path.join('data/dictionary_scores',i),allow_pickle=True).item()
+	coordinate_to_id[fname] = np.load(os.path.join('data/coord_to_index',i),allow_pickle=True).item()
 	dataset_pages[fname] = {}
 	for j in data[fname]:
 		if j in ["ids", "links", "smiles"] or "mad" in j:
@@ -104,11 +104,11 @@ for i in os.listdir('dictionary_scores'):
 		dataset_pages[fname][j] = fname in ["approved", "natural"] and "Zn" not in j
 
 def babel_images(database,index):
-    if not os.path.isdir('babel'):
-        os.mkdir('babel')
-    if not os.path.isdir('babel/'+database):
-        os.mkdir('babel/'+database)
-    if not os.path.isfile('babel/{}/{}.png'.format(database,index)):
-        print('obabel -:"{}" -O babel/{}/{}.png'.format(data[database]['smiles'][index],database,index))
-        os.system('obabel -:"{}" -O babel/{}/{}.png -xb none'.format(data[database]['smiles'][index],database,index))
-    return ('babel/{}/'.format(database),'{}.png'.format(index))
+    if not os.path.isdir('data/babel'):
+        os.mkdir('data/babel')
+    if not os.path.isdir('data/babel/'+database):
+        os.mkdir('data/babel/'+database)
+    if not os.path.isfile('data/babel/{}/{}.png'.format(database,index)):
+        print('obabel -:"{}" -O data/babel/{}/{}.png'.format(data[database]['smiles'][index],database,index))
+        os.system('obabel -:"{}" -O data/babel/{}/{}.png -xb none'.format(data[database]['smiles'][index],database,index))
+    return ('data/babel/{}/'.format(database),'{}.png'.format(index))
