@@ -11,7 +11,6 @@ RUN bash /tmp/miniconda.sh -bfp /usr/local \
 RUN pip install drawSvg
 RUN apt install -y pngquant 
 ENV MODULE_NAME app 
-COPY --from=build /opt/prepare /app/
 WORKDIR /app
 RUN pip install numpy
 RUN apt update && apt-get install -y openbabel
