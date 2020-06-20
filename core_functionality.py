@@ -110,5 +110,5 @@ def babel_images(database,index):
         os.mkdir('babel/'+database)
     if not os.path.isfile('babel/{}/{}.png'.format(database,index)):
         print('obabel -:"{}" -O babel/{}/{}.png'.format(data[database]['smiles'][index],database,index))
-        os.system('obabel -:"{}" -O babel/{}/{}.png'.format(data[database]['smiles'][index],database,index))
+        os.system('obabel -:"{}" -O babel/{}/{}.png -xb none'.format(data[database]['smiles'][index],database,index))
     return ('babel/{}/'.format(database),'{}.png'.format(index))

@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layout.html" %}
+{% block content %}
 <head>
-  <title>Ligand:Protein Viewer</title>
   <script src="/static/scripts/ngl.js"></script>
   <script src="/static/scripts/jquery.min.js"></script> 
-
-  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 </head>
 <body>
@@ -48,5 +45,4 @@ Download Files:
 <br>
 <a href="/pdbs/ligand/{{ drug_fname }}"> {{ drug_fname.split("_")[1][:-4] }}</a>
 </body>
-</html>
-
+{% endblock %}
