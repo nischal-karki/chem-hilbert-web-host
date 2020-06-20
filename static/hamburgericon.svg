@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg height="6pt" viewBox="0 0 4 6" width="4pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<line x1="0" y1="1" x2="4" y2="1" style="stroke:rgb(255,255,255);stroke-width:1">
-<line x1="0" y1="3" x2="4" y2="3" style="stroke:rgb(255,255,255);stroke-width:1">
-<line x1="0" y1="5" x2="4" y2="5" style="stroke:rgb(255,255,255);stroke-width:1">
+<svg height="600pt" viewBox="0 0 400 600" width="400pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<line x1="30" y1="200" x2="370" y2="200" style="stroke:rgb(255,255,255); stroke-width:50; stroke-linecap:round"/>
+<line x1="30" y1="300" x2="370" y2="300" style="stroke:rgb(255,255,255); stroke-width:50; stroke-linecap:round"/>
+<line x1="30" y1="400" x2="370" y2="400" style="stroke:rgb(255,255,255); stroke-width:50; stroke-linecap: round"/>
 </svg>
