@@ -24,7 +24,6 @@ div.about {
   overflow: hidden;
   background-color: #f71735;
   width: 100vw;
-  height: 7vh;
   position: fixed;
   z-index: 1;
   text-align:center;
@@ -45,20 +44,26 @@ div.about {
     left: 0;
     top: 0;
     display: block;
-    padding: 0 0 0 0;
+    padding: 0 0 2.2vh 0;
   }
   .topnav svg {
     stroke:white;
   }
   .topnav svg:hover {
     stroke:black;
+    background-color: #facccc;
+  }
+  .topnav div.buttons {
+    position: fixed;
+    top: 7vh;
   }
   .topnav a.responsive {
     float:none;
     display: block;
-    text-align: right;
-    height: 7vh;
-    background-color: #f71735;
+    text-align: left;
+    height: 5vh;
+    width: 100vw;
+    background-color: #f72745;
     padding: 0 0 0 0;
   }
 }
@@ -82,7 +87,10 @@ div.about {
 .topnav a:hover {
   background-color: #facccc;
   color: black;
-  height: 7vh;
+  height: 4.8vh;
+}
+.topnav.empty-line {
+  display:none;
 }
 
 .column {
