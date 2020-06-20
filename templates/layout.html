@@ -7,16 +7,29 @@
   <body>
     <header>
       <div class="container">
-      </header>
-        <strong><nav>
-          <div class="topnav">
-            <a href="{{ url_for('home') }}">Home</a>
-            <a href="{{ url_for('screening') }}">Screening</a>
-            <a href="{{ url_for('about') }}">About</a>
-            <div class="logo"><img  src="../static/SMUlogo.png"></img></div>
-          </div>
-        </nav></strong>
+    </header>
+
+    <strong>
+    <nav>
+      <div class="topnav">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('screening') }}">Screening</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <div class="logo"><img  src="../static/SMUlogo.png"></img></div>
+        <a href="javascript:void(0);" class="icon" onclick="nav_response()">
+          <img src="../static/hamburgericon.svg" style="width:auto; height:7vh;"></img>
+        </a>
       </div>
+    </nav>
+    </strong>
+      </div>
+
+      <script>
+        function nav_response() {
+          var x = document.getElementsByClassName("topnav");
+          x.className += " responsive";
+        }
+      </script>
 
     <div class="container" style="padding-top:7vh;">
       {% block content %}

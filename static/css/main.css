@@ -33,6 +33,29 @@ div.about {
   padding: 0;
 }
 
+@media (max-width: 500px) {
+  .topnav a { 
+    display: none;
+  }
+  .topnav a.icon {
+    float:left;
+    display: block;
+  }
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
 .topnav a {
   float: left;
   color: #f8f8f8;
@@ -43,10 +66,11 @@ div.about {
 }
 
 .topnav img {
-  float: right;
   height: 7vh;
   width: auto;
-  padding-right: 2vw;
+  position: absolute;
+  top: 0;
+  right: 2vw;
 }
 
 .topnav a:hover {
