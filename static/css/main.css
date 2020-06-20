@@ -74,7 +74,8 @@ div.about {
 
 .block > h2 {
   padding-left: 20px;
-  font-size: medium;
+  font-weight: bold;
+  font-size: large;
   float:center; 
 }
 
