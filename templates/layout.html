@@ -1,22 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Flask app</title>
+    <title>CoVID-19 Interactive Drug Selector</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   </head>
-  <body>
-    <header>
-      <div class="container">
-      </header>
-        <strong><nav>
-          <div class="topnav">
-            <a href="{{ url_for('home') }}">Home</a>
-            <a href="{{ url_for('screening') }}">Screening</a>
-            <a href="{{ url_for('about') }}">About</a>
-            <div class="logo"><img  src="../static/SMUlogo.png" width="9%" height="" ></img></div>
-          </div>
-        </nav></strong>
+  <body class="background">
+    <strong>
+    <nav>
+      <div class="topnav" id="navbar">
+        <a href="javascript:void(0);" class="icon" onclick="nav_response()">
+          <svg height="7vh" viewBox="0 0 400 600" width="7vh" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <line x1="30" y1="200" x2="370" y2="200" style="stroke-width:50; stroke-linecap:round"/>
+            <line x1="30" y1="300" x2="370" y2="300" style="stroke-width:50; stroke-linecap:round"/>
+            <line x1="30" y1="400" x2="370" y2="400" style="stroke-width:50; stroke-linecap: round"/>
+          </svg>
+        </a>
+        <img class="logo" src="../static/SMUlogo.png"></img>
+        <div class="buttons">
+          <a href="{{ url_for('home') }}">Home</a>
+          <a href="{{ url_for('screening') }}">Screening</a>
+          <a href="{{ url_for('about') }}">About</a>
+        </div>
       </div>
+    </nav>
+    </strong>
+      </div>
+
+      <script>
+        function nav_response() {
+          var x = document.getElementsByTagName("A");
+          var i;
+          var check=true;
+          for (i=0; i< x.length; i++) {
+            if (x[i].className === "responsive"){
+              x[i].classList.remove("responsive");
+              check =false;
+            }
+            if ((x[i].className !== "icon" && check)) {
+              x[i].classList.add("responsive");
+            }
+          }
+        }
+      </script>
 
     <div class="container" style="padding-top:7vh;">
       {% block content %}

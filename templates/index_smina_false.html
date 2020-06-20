@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layout.html" %}
+{% block content %}
 <head>
-    <meta charset="UTF-8">
-    <title>{{ page_name }}</title>
 	<link rel="stylesheet" type="text/css" href="/static/styles/mainpage.css"></style>
 	<script src="/static/scripts/jquery.min.js"></script>
 </head>
 
 <body>
-
-<h4> <a href="/"> Go Back </a> </h4>
-
 <div class="main_title">
 	{{ page_name }}
 </div>
 <hr>
-
 <div display:"block">
 	<div class="grid2cols">
 			<div>
@@ -83,4 +77,4 @@
 </div>
 
 </body>
-</html>
+{% endblock %}

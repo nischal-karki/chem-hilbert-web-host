@@ -1,8 +1,21 @@
 .left-div {
     float: left;
 }
+
 .right-div {
     float: right;
+}
+
+body.background {
+    background-image:none;
+}
+
+body.override {
+	background-image:url("../ACES1.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-attachment: fixed;
+	background-position: center;
 }
 
 .main_title {
@@ -25,6 +38,7 @@
 	width: 50vw;
 	height: auto;
 	float: right;
+	background-color: white;
 }
 
 .bar{
@@ -62,12 +76,20 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-gap: 10px;
-	background-color: snow;
+
 	padding:0px;
 }
 
-.gid3cols > div {
-		background-color: rgba(255,255,255,0.9);
+.grid3cols > div:hover {
+	background-color: white;
+	opacity: 1;
+}
+
+.grid3cols > div {
+		background-color: rgba(255,255,255);
 		font-size-adjust: auto;
 		text-align: left;
+		opacity: 1;
+		border-style: solid;
+		border-color: black;
 }
