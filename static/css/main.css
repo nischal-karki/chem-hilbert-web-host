@@ -38,7 +38,7 @@ div.about {
   display: none;
 }
 
-@media (max-width: 500px) {
+@media only screen and (max-width: 500px), (min-width:500px) {
   .topnav a { 
     display: none;
   }

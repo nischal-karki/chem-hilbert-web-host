@@ -81,15 +81,12 @@ body.override {
 }
 
 .grid3cols > div:hover {
-	background-color: white;
-	opacity: 1;
+	border-style: solid;
+	border-color: rgb(0, 0, 0);
 }
 
 .grid3cols > div {
 		background-color: rgba(255,255,255);
-		font-size-adjust: auto;
+		font-size: 0.8em;
 		text-align: left;
-		opacity: 1;
-		border-style: solid;
-		border-color: black;
 }
