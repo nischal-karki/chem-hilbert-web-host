@@ -37,14 +37,9 @@
 		var naturalClickPosY = (naturalHeight-(naturalHeight / currentHeight) * currentClickPosY).toFixed(0);
 		return naturalClickPosX + "," + naturalClickPosY;
 	};
-	$(".hilbert").on("dblclick", function(e){
+	$(".hilbert").on("click", function(e){
 		var $img = $(this);
 		window.location = "./{{page_name}}?"+coords($img,e);
-	});
-	$(".hilbert").on("click",function(e){
-		var $img = $(this);
-		console.log("poop");
-		document.getElementById("click_loc").innerHTML="Clicked cursor position: "+coords($img,e) ;
 	});
 </script>
 
