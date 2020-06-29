@@ -5,3 +5,4 @@ if ! $( python hash_check.py ); then
 	echo running prepare.sh
 	bash prepare.sh
 fi
+cd $cwd
