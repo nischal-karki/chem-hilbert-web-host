@@ -52,13 +52,14 @@ body.override {
 	grid-row: none;
 	grid-template-columns: 1fr 1fr;
 	overflow: auto;
-	position: relative;
+	position: static;
 	text-align:center;
 }
+
 .grid2colslists > div {
 	padding: 0px;
-	overflow: auto;
 }
+
 .grid2cols {
 	display: grid;
 	grid-row: none;
@@ -76,7 +77,6 @@ body.override {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-gap: 10px;
-
 	padding:0px;
 }
 
