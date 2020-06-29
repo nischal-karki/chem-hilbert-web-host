@@ -26,4 +26,3 @@ ADD https://smu.box.com/shared/static/kx7nntphlbha5pyera4z7769kcfgnnwc.gz /opt/p
 ADD https://smu.box.com/shared/static/jfa0oz2x6mso9z36cf0apjysrm2yxhq5.gz /opt/prepare/protein.tar.gz
 COPY ./hash_check.py /opt/prepare/hash_check.py
 COPY ./prepare.sh /opt/prepare/prepare.sh
-CMD /bin/bash /opt/prepare/prepare.sh
