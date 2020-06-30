@@ -24,3 +24,5 @@ COPY ./core_functionality.py /app/core_functionality.py
 ADD https://smu.box.com/shared/static/d0q8qib58sxgba3paq2iybvmk7ta6f15.gz /opt/prepare/dictionary.tar.gz
 ADD https://smu.box.com/shared/static/kx7nntphlbha5pyera4z7769kcfgnnwc.gz /opt/prepare/ligand.tar.gz
 ADD https://smu.box.com/shared/static/jfa0oz2x6mso9z36cf0apjysrm2yxhq5.gz /opt/prepare/protein.tar.gz
+COPY ./hash_check.py /opt/prepare/hash_check.py
+COPY ./prepare.sh /opt/prepare/prepare.sh
