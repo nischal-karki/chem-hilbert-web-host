@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 {% block content %}
-
+<div class="row">
   <div class="block"> 
-    <div style="width: 50%;">       
+    <div style="width: 60%;">       
     <div>Authors</div>
     <ul>
       <li><a>Nischal Komal Karki</a></li>
@@ -14,7 +14,7 @@
     </ul>
     </div>
 
-    <div style="width: 50%; "> 
+    <div style="width: 60%; "> 
     <div>Research groups</div>
     <p>This project was born by the joint effort of multiple research groups @ SMU:</p>
     <ul>
@@ -24,8 +24,12 @@
     </ul>
   </div>
 
+  <div style="float: left; width: 60%;">
+    <div>Manuscript</div>
+    <p>The manuscript for this study can be found <A HREF="https://chemrxiv.org/articles/Predicting_Potential_SARS-COV-2_Drugs_-_In_Depth_Drug_Database_Screening_Using_Deep_Neural_Network_Framework_SSnet_Classical_Virtual_Screening_and_Docking/12362213">here</A></p>
+  </div>
 
-    <div style="float: left; width: 50%;">
+  <div style="width: 60%; margin-bottom: 20px;">
     <div>Acknowledgments</div>
     <p>This project was made possible thanks to the computational resources provided by SMU and the Center for Scientific Computation at Southern Methodist University. 
       The ACE2:S1 background image was generated using <A HREF="https://3dproteinimaging.com">3dproteinimaging.com</A>.
@@ -33,11 +37,6 @@
     <img  src="../static/ManeFrame-2.png" width="100%" height="" ></img>
   </div>
 
-  <div style="float: left; width: 50%; margin-bottom: 20px;">
-    <div>Manuscript</div>
-    <p>The manuscript for this study can be found <A HREF="https://chemrxiv.org/articles/Predicting_Potential_SARS-COV-2_Drugs_-_In_Depth_Drug_Database_Screening_Using_Deep_Neural_Network_Framework_SSnet_Classical_Virtual_Screening_and_Docking/12362213">here</A></p>
-  </div>
-
 </div>
-
+</div>
 {% endblock %}

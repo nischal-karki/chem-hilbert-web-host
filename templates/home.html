@@ -1,50 +1,57 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="home">
-<div class="block">
-  <h2>Welcome to the CoVID-19 interactive drug screening</h2>
-   <div>
-     <div>Mission</div>
-     <p>In response to the insurgence of the CoVID-19 pandemic, research groups around the world invested time and effort to obtain information about the SARS-2 virus and its pathology.
-        Of crucial importance is sharing of data between scientist. With this website we aim to provide a fast, and easy to use tool for researcher to analyze and visualize a library of pre-screened clinically approved drugs and natural compounds.  The screenings targeted the human ACE2 protein, whose binding to the viral SARS-CoV-2 spike protein is crucial for viral infection of human cells. Our screenings were done using the virtual screening method smina and our in house deep learning method SSnet. The drugs are organized in a heatmap based on their structural similarity and binding affinity/probability to the protein targes. This clustering, together with affinity scores, will provide immediate information of potential molecular scaffolds and substituents that provide high binding between ligands and ACE2. In addition to the approved compounds, a library on one billion compounds is being processed.
-     </p>
-    </div> 
-
-    <div style="size: 50%;">
-    <div>What you will find in this website</div>
-    <p>Three datasets of compounds:
-        <ul>
-        <li>FDA and World: Clinically approved compounds from FDA or other international regulatory agencies (World)</li>
-        <li>Natural: Natural compunds from NuBBE (Brazil) and South Africa (SANC)</li>
-        <li>BDB: Compounds with known biological targets and affinity from the Binding DB </li>
-      </ul> </p>
-      <p>Scoring methods:
-        <ul>
-          <li>Binding affinities according to smina</li>
-          <li>Binding probabilities according to SSnet</li>
-          <li>Consensuous scoring from smina and SSnet</li>
-        </ul> </p>
-      <p>Multiple ACE2 structures:
-        <ul>
-          <li>Affinities calculated for single ACE2 structures with or without S1 viral protein</li>
-          <li>Selectivity scoring for different ACE2(:S1) conformation</li>
-        </ul>
+  <div class="row">
+    <h2 style="margin-left: 20px;">Welcome to the CoVID-19 interactive drug screening</h2>
+    <div class="block" style="flex: 100%">
+      <div>
+      <div>Mission</div>
+      <p>In response to the insurgence of the CoVID-19 pandemic, research groups around the world invested time and effort to obtain information about the SARS-2 virus and its pathology.
+          Of crucial importance is sharing of data between scientist. With this website we aim to provide a fast, and easy to use tool for researcher to analyze and visualize a library of pre-screened clinically approved drugs and natural compounds.  The screenings targeted the human ACE2 protein, whose binding to the viral SARS-CoV-2 spike protein is crucial for viral infection of human cells. Our screenings were done using the virtual screening method smina and our in house deep learning method SSnet. The drugs are organized in a heatmap based on their structural similarity and binding affinity/probability to the protein targes. This clustering, together with affinity scores, will provide immediate information of potential molecular scaffolds and substituents that provide high binding between ligands and ACE2. In addition to the approved compounds, a library on one billion compounds is being processed.
       </p>
-      <p>A 2D Hilbert map based on compounds similarity and affinity scoring</p>
-      <p>Visualization of the docked compounds in ACE</p>
-  </div>
+      </div> 
+    </div>
 
-  <div style="size: 50%; margin-bottom: 20px;">
-    <div>How to use this website</div>
-    <p>
-      <ol>
-        <li>Go to <A HREF="screening">screening</A> page</li>
-        <li>Select a database</li>
-        <li>Select protein target and method</li>
-        <li>Click on the point of the heat-map of interest: Red zones amount for high affinity and blue zones for low affinity</li>
-        <li>To see the ligand docked to the ACE2 structure, click on the compound name</li>
-        <li>To have general information about the ligand, click the link of the compound to the database</li>
-      </ol></p>
+ 
+    <div class="block">
+      <div>
+      <div>What you will find in this website</div>
+      <p>Three datasets of compounds:
+          <ul>
+          <li>FDA and World: Clinically approved compounds from FDA or other international regulatory agencies (World)</li>
+          <li>Natural: Natural compunds from NuBBE (Brazil) and South Africa (SANC)</li>
+          <li>BDB: Compounds with known biological targets and affinity from the Binding DB </li>
+        </ul> </p>
+        <p>Scoring methods:
+          <ul>
+            <li>Binding affinities according to smina</li>
+            <li>Binding probabilities according to SSnet</li>
+            <li>Consensuous scoring from smina and SSnet</li>
+          </ul> </p>
+        <p>Multiple ACE2 structures:
+          <ul>
+            <li>Affinities calculated for single ACE2 structures with or without S1 viral protein</li>
+            <li>Selectivity scoring for different ACE2(:S1) conformation</li>
+          </ul>
+        </p>
+        <p>A 2D Hilbert map based on compounds similarity and affinity scoring</p>
+        <p>Visualization of the docked compounds in ACE</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <div>
+      <div>How to use this website</div>
+        <p>
+          <ol>
+            <li>Go to <A HREF="screening">screening</A> page</li>
+            <li>Select a database</li>
+            <li>Select protein target and method</li>
+            <li>Click on the point of the heat-map of interest: Red zones amount for high affinity and blue zones for low affinity</li>
+            <li>To see the ligand docked to the ACE2 structure, click on the compound name</li>
+            <li>To have general information about the ligand, click the link of the compound to the database</li>
+          </ol></p>
+      </div>
     </div>
 </div>
 </div>

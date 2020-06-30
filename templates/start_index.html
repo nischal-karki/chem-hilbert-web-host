@@ -6,31 +6,29 @@
 </head>
 
 <div>
-
     <div class="main_title"> Please click on one of the following options</div>
         
-    <div class="grid2colslists">
+    <div class="row">
         {% for (title, page_names, page_urls, length) in page_info %}
-        <div class="block" style="size: 100%;">
+        <div class="block"">
         <div style="font-size:3vw">Scores for {{ title }}
             {% for count in range(length) %}
-            <div style="font-size:2vw" style="display: block; size: 40%">
+            <div style="font-size:2vw">
                 <a href="{{ page_urls[count] }}">{{ page_names[count] }}</a>
             </div>
             {% endfor %}
-            <br>
         </div>
         </div>
         {% endfor %}
-        <div style="font-size:3vw; text-align: center;" class="block">
-            <br><br>
-            ZINC data coming soon
+        <div class="block">
+            <div style="font-size:3vw"> ZINC data coming soon</div>
+           
         </div>
     </div>
+   
 </div>
 
 <script>
-    
     document.addEventListener("DOMContentLoaded",function do_stuff(){
         document.body.className = document.body.className.replace("background","override");
         console.log("hello")
