@@ -1,3 +1,3 @@
 # chem-hilbert-web-host
 
-See <https:\\covid19screen.smu.edu> for data.
+See <a href=https:\\covid19screen.smu.edu>screening results</a>.
